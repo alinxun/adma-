@@ -2,7 +2,7 @@
 
 - a wrapper function package（自己写的封装一些实用函数的包）
 - npm-url：[npm](https://www.npmjs.com/package/adam-lx)
-- git-url：[gitlab](https://github.com/alinxun/adma-lx.git)
+- git-url：[github](https://github.com/alinxun/adma-lx.git)
 <br>
 <br>
 

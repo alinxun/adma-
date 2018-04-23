@@ -1,4 +1,4 @@
-const adam = {};
+const base = {};
 
 /**
 * 获取指定的 querystring 中指定 name 的 value
@@ -9,7 +9,7 @@ const adam = {};
 * query('hello', '?hello=js') 结果是 js
 *
 */
-adam.query = (name, querystring) => {
+base.query = (name, querystring) => {
     const regexp = new RegExp("(?:\\?|&)" + name + "=(.*?)(?:&|$)");
     const result = querystring.match(regexp);
     return result ? result[1] : undefined;
@@ -22,7 +22,7 @@ adam.query = (name, querystring) => {
 *
 * serialize({hello: 'js', hi: 'test'}) 结果是 ''
 */
-adam.serialize = (data) => {
+base.serialize = (data) => {
     let s = [];
     for (var i in data) {
         s.push(i + '=' + data[i])
@@ -37,7 +37,7 @@ adam.serialize = (data) => {
  * @param {String} selector
  * @return {DOM|Null}
  */
-adam.$ = (selector) => {
+base.$ = (selector) => {
     return document.querySelector(selector);
 }
 
@@ -48,7 +48,7 @@ adam.$ = (selector) => {
  * @return {DOM}
  */
 
-adam.removeNode = (node) => {
+base.removeNode = (node) => {
     return node.parentNode.removeChild(node);
 }
 
@@ -58,7 +58,7 @@ adam.removeNode = (node) => {
  * @param {DOM} node
  * @param {DOM} target
  */
-adam.insertAfter = (node, target) => {
+base.insertAfter = (node, target) => {
     const parent = target.parentNode;
     if (parent.lastChild == target) {
         parent.appendChild(node);
@@ -73,7 +73,7 @@ adam.insertAfter = (node, target) => {
  * @param {DOM} node
  * @param {String|Array} className
  */
-adam.addClass = (node, className) => {
+base.addClass = (node, className) => {
     if (typeof (className) == 'string') {
         node.classList.add(className);
     } else {
@@ -89,7 +89,7 @@ adam.addClass = (node, className) => {
  * @param {DOM} node
  * @param {String|Array} className
  */
-adam.removeClass = (node, className) => {
+base.removeClass = (node, className) => {
     if (className instanceof Array) {
         className.forEach(function (el) {
             node.classList.remove(el);
@@ -108,7 +108,7 @@ adam.removeClass = (node, className) => {
  * getAbsoluteUrl('/jerojiang') => 'http://imweb.io/jerojiang'
  * 在当前页面获取绝对路径，这里要创建 A 元素，测试用例看你们的了
  */
-adam.getAbsoluteUrl = (url) => {
+base.getAbsoluteUrl = (url) => {
     const el = document.createElement("a");
     el.href = url;
     return el.href;
@@ -119,7 +119,7 @@ adam.getAbsoluteUrl = (url) => {
  * @param {callback} function
  * @param {time} Number
  */
-adam.debounce = (callback, time) => {
+base.debounce = (callback, time) => {
     time = time || 300;
     let timer = null;
     return function () {
@@ -140,11 +140,11 @@ adam.debounce = (callback, time) => {
  *
  * removeItemByIndex(1, [1,2,3]) => [1, 3]
  */
-adam.removeItemByIndex = (index, arr) => {
+base.removeItemByIndex = (index, arr) => {
     arr.splice(index, 1);
     return arr;
 }
 
 
 
-module.exports = adam;
+module.exports = base;
